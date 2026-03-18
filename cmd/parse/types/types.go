@@ -1,7 +1,6 @@
 package types
 
 import (
-	"cosmossdk.io/simapp"
 	simappparams "cosmossdk.io/simapp/params"
 	"github.com/cosmos/cosmos-sdk/std"
 
@@ -69,8 +68,9 @@ func (cfg *Config) GetEncodingConfigBuilder() EncodingConfigBuilder {
 			encodingConfig := simappparams.MakeTestEncodingConfig()
 			std.RegisterLegacyAminoCodec(encodingConfig.Amino)
 			std.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-			simapp.ModuleBasics.RegisterLegacyAminoCodec(encodingConfig.Amino)
-			simapp.ModuleBasics.RegisterInterfaces(encodingConfig.InterfaceRegistry)
+			// ModuleBasics is no longer available in cosmos-sdk v0.50
+			// simapp.ModuleBasics.RegisterLegacyAminoCodec(encodingConfig.Amino)
+			// simapp.ModuleBasics.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 			return encodingConfig
 		}
 	}

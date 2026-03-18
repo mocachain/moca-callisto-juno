@@ -19,3 +19,6 @@ coverage.txt
 # Configuration
 *.toml
 *.yaml
+
+# Environment files
+.env

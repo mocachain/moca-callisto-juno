@@ -213,7 +213,9 @@ func (cp *Node) Tx(hash string) (*types.Tx, error) {
 		var stdMsg sdk.Msg
 		err = cp.codec.UnpackAny(msg, &stdMsg)
 		if err != nil {
-			return nil, fmt.Errorf("error while unpacking message: %s", err)
+			_ = err
+			// In our Moca project, we index data based on events, so we don't need to decode messages.
+			// return nil, fmt.Errorf("error while unpacking message: %s", err)
 		}
 	}
 

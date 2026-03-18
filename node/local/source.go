@@ -7,17 +7,18 @@ import (
 	"reflect"
 	"unsafe"
 
+	"cosmossdk.io/log"
 	"cosmossdk.io/simapp/params"
-	db "github.com/cometbft/cometbft-db"
+	"cosmossdk.io/store"
+	"cosmossdk.io/store/metrics"
+	storetypes "cosmossdk.io/store/types"
+	cosmosdb "github.com/cosmos/cosmos-db"
 	"github.com/cosmos/cosmos-sdk/codec"
-	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 
 	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/log"
-	tmnode "github.com/cometbft/cometbft/node"
+	cmtlog "github.com/cometbft/cometbft/libs/log"
 	tmproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	tmstore "github.com/cometbft/cometbft/store"
-	"github.com/cosmos/cosmos-sdk/store"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/viper"
 
@@ -32,19 +33,19 @@ var (
 type Source struct {
 	Initialized bool
 
-	StoreDB db.DB
+	StoreDB cosmosdb.DB
 
 	Codec       codec.Codec
 	LegacyAmino *codec.LegacyAmino
 
 	BlockStore *tmstore.BlockStore
-	Logger     log.Logger
-	Cms        sdk.CommitMultiStore
+	Logger     cmtlog.Logger
+	Cms        storetypes.CommitMultiStore
 }
 
 // NewSource returns a new Source instance
 func NewSource(home string, encodingConfig *params.EncodingConfig) (*Source, error) {
-	levelDB, err := db.NewGoLevelDB("application", path.Join(home, "data"))
+	levelDB, err := cosmosdb.NewGoLevelDB("application", path.Join(home, "data"), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +55,7 @@ func NewSource(home string, encodingConfig *params.EncodingConfig) (*Source, err
 		return nil, err
 	}
 
-	blockStoreDB, err := tmnode.DefaultDBProvider(&tmnode.DBContext{ID: "blockstore", Config: tmCfg})
+	blockStoreDB, err := cfg.DefaultDBProvider(&cfg.DBContext{ID: "blockstore", Config: tmCfg})
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +67,8 @@ func NewSource(home string, encodingConfig *params.EncodingConfig) (*Source, err
 		LegacyAmino: encodingConfig.Amino,
 
 		BlockStore: tmstore.NewBlockStore(blockStoreDB),
-		Logger:     log.NewTMLogger(log.NewSyncWriter(os.Stdout)).With("module", "explorer"),
-		Cms:        store.NewCommitMultiStore(levelDB),
+		Logger:     cmtlog.NewTMLogger(cmtlog.NewSyncWriter(os.Stdout)).With("module", "explorer"),
+		Cms:        store.NewCommitMultiStore(levelDB, log.NewNopLogger(), metrics.NewNoOpMetrics()),
 	}, nil
 }
 
@@ -160,7 +161,7 @@ func (k Source) InitStores() error {
 // It returns a new Context that can be used to query the data, or an error if something wrong happens.
 func (k Source) LoadHeight(height int64) (sdk.Context, error) {
 	var err error
-	var cms sdk.CacheMultiStore
+	var cms storetypes.CacheMultiStore
 	if height > 0 {
 		cms, err = k.Cms.CacheMultiStoreWithVersion(height)
 		if err != nil {
@@ -173,5 +174,5 @@ func (k Source) LoadHeight(height int64) (sdk.Context, error) {
 		}
 	}
 
-	return sdk.NewContext(cms, tmproto.Header{}, false, k.Logger), nil
+	return sdk.NewContext(cms, tmproto.Header{}, false, log.NewNopLogger()), nil
 }

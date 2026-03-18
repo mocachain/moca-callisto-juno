@@ -47,13 +47,7 @@ func parseAddressesFromEvents(tx *types.Tx) []string {
 
 	for _, event := range tx.Events {
 		for _, attribute := range event.Attributes {
-			// check if event value is validator address
-			valAddresss, _ := sdk.ValAddressFromBech32(attribute.Value)
-			if valAddresss != nil {
-				allAddressess = append(allAddressess, valAddresss.String())
-			}
-
-			// check if event value is sdk address
+			// check if event value is sdk address (including validator addresses)
 			sdkAddress, err := sdk.AccAddressFromBech32(attribute.Value)
 			if err != nil {
 				// skip if value is not sdk address
