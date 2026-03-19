@@ -352,25 +352,25 @@ require (
 
 replace (
 	// Replace cosmossdk.io modules with mocachain implementations
-	cosmossdk.io/api => github.com/mocachain/moca-cosmos-sdk/api v1.1.0-rc1-66c0054
-	cosmossdk.io/simapp => github.com/mocachain/moca-cosmos-sdk/simapp v1.1.0-rc1-66c0054
-	cosmossdk.io/store => github.com/mocachain/moca-cosmos-sdk/store v1.1.0-rc1-66c0054
-	cosmossdk.io/x/evidence => github.com/mocachain/moca-cosmos-sdk/x/evidence v1.1.0-rc1-66c0054
-	cosmossdk.io/x/feegrant => github.com/mocachain/moca-cosmos-sdk/x/feegrant v1.1.0-rc1-66c0054
-	cosmossdk.io/x/nft => github.com/mocachain/moca-cosmos-sdk/x/nft v1.1.0-rc1-66c0054
-	cosmossdk.io/x/tx => github.com/mocachain/moca-cosmos-sdk/x/tx v1.1.0-rc1-66c0054
-	cosmossdk.io/x/upgrade => github.com/mocachain/moca-cosmos-sdk/x/upgrade v1.1.0-rc1-66c0054
+	cosmossdk.io/api => github.com/mocachain/moca-cosmos-sdk/api v1.2.0-rc1-b329d8b
+	cosmossdk.io/simapp => github.com/mocachain/moca-cosmos-sdk/simapp v1.2.0-rc1-b329d8b
+	cosmossdk.io/store => github.com/mocachain/moca-cosmos-sdk/store v1.2.0-rc1-b329d8b
+	cosmossdk.io/x/evidence => github.com/mocachain/moca-cosmos-sdk/x/evidence v1.2.0-rc1-b329d8b
+	cosmossdk.io/x/feegrant => github.com/mocachain/moca-cosmos-sdk/x/feegrant v1.2.0-rc1-b329d8b
+	cosmossdk.io/x/nft => github.com/mocachain/moca-cosmos-sdk/x/nft v1.2.0-rc1-b329d8b
+	cosmossdk.io/x/tx => github.com/mocachain/moca-cosmos-sdk/x/tx v1.2.0-rc1-b329d8b
+	cosmossdk.io/x/upgrade => github.com/mocachain/moca-cosmos-sdk/x/upgrade v1.2.0-rc1-b329d8b
 	// Fix btcsuite/btcd version compatibility
 	github.com/btcsuite/btcd => github.com/btcsuite/btcd v0.22.1
 	github.com/btcsuite/btcd/btcec/v2 => github.com/btcsuite/btcd/btcec/v2 v2.3.4
-	github.com/cometbft/cometbft => github.com/mocachain/moca-cometbft v1.2.0-rc1-f85713e
+	github.com/cometbft/cometbft => github.com/mocachain/moca-cometbft v1.2.0-rc2-279e646
 	github.com/cometbft/cometbft-db => github.com/mocachain/moca-cometbft-db v1.1.0-rc1-22256c4
 	// Use mocachain moca-cosmos-sdk for cosmos-sdk v0.50 compatibility
-	github.com/cosmos/cosmos-sdk => github.com/mocachain/moca-cosmos-sdk v1.2.0-rc1-66c0054
-	github.com/cosmos/cosmos-sdk/client/v2 => github.com/mocachain/moca-cosmos-sdk/client/v2 v2.1.0-rc1-66c0054
-	github.com/cosmos/iavl => github.com/mocachain/moca-iavl v1.2.0-rc1-82a95b2
+	github.com/cosmos/cosmos-sdk => github.com/mocachain/moca-cosmos-sdk v1.2.0-rc14-b329d8b
+	github.com/cosmos/cosmos-sdk/client/v2 => github.com/mocachain/moca-cosmos-sdk/client/v2 v2.1.0-rc1-b329d8b
+	github.com/cosmos/iavl => github.com/mocachain/moca-iavl v1.2.0-rc1-7d754d4
 	// Use mocachain moca-ibc-go
-	github.com/cosmos/ibc-go/v10 => github.com/mocachain/moca-ibc-go/v10 v10.2.0-rc1-5d902f9
+	github.com/cosmos/ibc-go/v10 => github.com/mocachain/moca-ibc-go/v10 v10.2.0-rc1-6647ca4
 )
 
 replace github.com/confio/ics23/go => github.com/cosmos/ics23/go v0.10.0
