@@ -366,11 +366,11 @@ replace (
 	github.com/cometbft/cometbft => github.com/mocachain/moca-cometbft v1.2.0-rc1-f85713e
 	github.com/cometbft/cometbft-db => github.com/mocachain/moca-cometbft-db v1.1.0-rc1-22256c4
 	// Use mocachain moca-cosmos-sdk for cosmos-sdk v0.50 compatibility
-	github.com/cosmos/cosmos-sdk => github.com/mocachain/moca-cosmos-sdk v1.2.0-rc1-66c0054
+	github.com/cosmos/cosmos-sdk => github.com/mocachain/moca-cosmos-sdk v1.2.0-rc2-66c0054
 	github.com/cosmos/cosmos-sdk/client/v2 => github.com/mocachain/moca-cosmos-sdk/client/v2 v2.1.0-rc1-66c0054
-	github.com/cosmos/iavl => github.com/mocachain/moca-iavl v1.2.0-rc1-82a95b2
+	github.com/cosmos/iavl => github.com/mocachain/moca-iavl v1.2.0-rc1-7d754d4
 	// Use mocachain moca-ibc-go
-	github.com/cosmos/ibc-go/v10 => github.com/mocachain/moca-ibc-go/v10 v10.2.0-rc1-5d902f9
+	github.com/cosmos/ibc-go/v10 => github.com/mocachain/moca-ibc-go/v10 v10.2.0-rc2-c490b6f
 )
 
 replace github.com/confio/ics23/go => github.com/cosmos/ics23/go v0.10.0
