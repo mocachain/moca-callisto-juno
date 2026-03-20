@@ -364,7 +364,7 @@ replace (
 	github.com/btcsuite/btcd => github.com/btcsuite/btcd v0.22.1
 	github.com/btcsuite/btcd/btcec/v2 => github.com/btcsuite/btcd/btcec/v2 v2.3.4
 	github.com/cometbft/cometbft => github.com/mocachain/moca-cometbft v1.2.0-rc0.0.20260319090650-6c202b1a2ec8
-	github.com/cometbft/cometbft-db => github.com/mocachain/moca-cometbft-db v1.1.0-rc1-22256c4
+	github.com/cometbft/cometbft-db => github.com/mocachain/moca-cometbft-db v0.0.1-feat-make-build.1
 	// Use mocachain moca-cosmos-sdk for cosmos-sdk v0.50 compatibility
 	github.com/cosmos/cosmos-sdk => github.com/mocachain/moca-cosmos-sdk v1.2.0-rc0.0.20260320020435-a29d423d1f97
 	github.com/cosmos/cosmos-sdk/client/v2 => github.com/mocachain/moca-cosmos-sdk/client/v2 v2.0.0-20260320020435-a29d423d1f97
